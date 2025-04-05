@@ -1,0 +1,21 @@
+<div *ngIf="editingEntry; else listView">
+  <app-address-edit
+    [entry]="editingEntry"
+    (save)="saveEntry($event)"
+    (cancel)="cancelEdit()"
+  ></app-address-edit>
+</div>
+
+<ng-template #listView>
+ 
+  <ul>
+    <li *ngFor="let entry of entries">
+      {{ entry.name }} - {{ entry.email }} - {{ entry.phoneNumber }}
+      <button (click)="editEntry(entry)">Edit</button>
+      <button>Delete</button>
+    </li>
+  </ul>
+  <div>
+    <button (click)="createNewEntry()">Create New Entry</button>
+  </div>
+</ng-template>

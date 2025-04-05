@@ -1,0 +1,20 @@
+<div class="address-edit">
+  <form (ngSubmit)="onSave()">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" [(ngModel)]="entry.name" name="name" required />
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" [(ngModel)]="entry.email" name="email" type="email" required />
+    </div>
+    <div>
+      <label for="phoneNumber">Phone Number:</label>
+      <input id="phoneNumber" name="phoneNumber" required />
+    </div>
+    <div>
+      <button type="submit">Save</button>
+      <button type="button" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,47 @@
+using Microsoft.AspNetCore.Mvc;
+using aa_interview.Services;
+using aa_interview.Models;
+
+
+
+[Route("api/[controller]")]
+[ApiController]
+public class AddressBookController(AddressBookService addressBookService) : ControllerBase
+{
+  
+    [HttpGet("{id}")]
+    public ActionResult<AddressBookEntry> GetEntry(int id)
+    {
+        var entry = addressBookService.GetEntry(id);
+        if (entry == null)
+        {
+            return NotFound();
+        }
+        return Ok(entry);
+    }
+
+    [HttpPost]
+    public ActionResult<AddressBookEntry> CreateEntry(AddressBookEntry entry)
+    {
+        var createdEntry = addressBookService.CreateEntry(entry);
+        return CreatedAtAction(nameof(GetEntry), new { id = createdEntry.Id }, createdEntry);
+    }
+
+    [HttpPut("{id}")]
+    public ActionResult UpdateEntry(int id, AddressBookEntry entry)
+    {
+        if (id == entry.Id)
+        {
+            return BadRequest();
+        }
+
+        var updated = addressBookService.UpdateEntry(entry);
+        if (updated != 1)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+}
