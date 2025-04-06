@@ -36,7 +36,7 @@ namespace aa_interview.Services
 
         public int UpdateEntry(AddressBookEntry entry)
         {
-            var existingEntry = GetAllEntries().FirstOrDefault();
+            var existingEntry = GetEntry(entry.Id);
           
             existingEntry.Name = entry.Name;
             existingEntry.Email = entry.Email;
