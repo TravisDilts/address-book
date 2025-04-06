@@ -3,9 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { AddressBookEntry } from '../models/address-book-entry.model';
 
 @Component({
-  selector: 'app-address-book',
-  templateUrl: './address-book.component.html',
-  styleUrls: ['./address-book.component.css']
+    selector: 'app-address-book',
+    templateUrl: './address-book.component.html',
+    styleUrls: ['./address-book.component.css'],
+    standalone: false
 })
 export class AddressBookComponent implements OnInit {
   entries: AddressBookEntry[] = [];

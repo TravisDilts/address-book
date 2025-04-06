@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AddressBookEntry } from '../models/address-book-entry.model';
 
 @Component({
-  selector: 'app-address-edit',
-  templateUrl: './address-edit.component.html',
-  styleUrls: ['./address-edit.component.css']
+    selector: 'app-address-edit',
+    templateUrl: './address-edit.component.html',
+    styleUrls: ['./address-edit.component.css'],
+    standalone: false
 })
 export class AddressEditComponent implements OnInit {
   @Input() entry: AddressBookEntry = { name: '', email: '', phoneNumber: '' };
