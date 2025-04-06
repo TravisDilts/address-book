@@ -16,7 +16,7 @@ export class AddressEditComponent implements OnInit {
   ngOnInit(): void {}
 
   onSave(): void {
-    this.save.emit();
+    this.save.emit(this.entry);
   }
 
   onCancel(): void {
