@@ -1,11 +1,31 @@
 using aa_interview.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddSingleton<AddressBookService>(); 
+
+/* If you are reading this part and are horrified that I've opened
+* all origins, methods, and headers for CORS, do not be concerned.
+*
+* I am aware this is generally bad practice and am just doing this
+* as a quick solution to allow communication between FE and BE on
+* my local machine so localhost:4200 and localhost:5124 can connect.
+*/
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy  =>
+                      {
+                          policy.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader()
+                           .SetIsOriginAllowed((host) => true);
+                      });
+});
 
 var app = builder.Build();
 
@@ -13,7 +33,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    
+    app.UseCors(MyAllowSpecificOrigins);
 }
 
 app.UseHttpsRedirection();

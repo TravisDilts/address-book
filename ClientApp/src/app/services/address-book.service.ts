@@ -7,7 +7,7 @@ import { AddressBookEntry } from '../models/address-book-entry.model';
     { providedIn: 'root' }
 )
 export class AddressBookService {
-  private apiUrl = 'https://localhost:5124/api/addressbook'; 
+  private apiUrl = 'http://localhost:5124/api/addressbook';
 
   constructor(private http: HttpClient) {}
 
