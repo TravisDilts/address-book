@@ -37,7 +37,7 @@ public class AddressBookController(AddressBookService addressBookService) : Cont
     [HttpPut("{id}")]
     public ActionResult UpdateEntry(int id, AddressBookEntry entry)
     {
-        if (id == entry.Id)
+        if (id != entry.Id)
         {
             return BadRequest();
         }
