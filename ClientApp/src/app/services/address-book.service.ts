@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AddressBookEntry } from '../models/address-book-entry.model';
 
@@ -20,7 +20,7 @@ export class AddressBookService {
   }
 
   createEntry(entry: AddressBookEntry): Observable<void> {
-    return this.http.post<void>(this.apiUrl, entry);
+    return this.http.post<void>(this.apiUrl, entry, { headers: {'Accept': 'application/json', 'Content-type': 'application/json'}});
   }
 
   updateEntry(entry: AddressBookEntry): Observable<void> {
