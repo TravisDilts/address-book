@@ -1,6 +1,7 @@
 {
   "name": "address-book-app",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -27,7 +28,7 @@
     "@angular/compiler": "~16.0.0",
     "@angular/compiler-cli": "~16.0.0",
     "@types/jasmine": "~3.6.0",
-    "@types/node": "^12.11.1",
+    "@types/node": "^18.0.0",
     "typescript": "4.9.5"
   }
 }

@@ -5,7 +5,7 @@ namespace aa_interview.Services
 {
     public class AddressBookService
     {
-        private readonly AddressBookEntry[] _entries = null!;
+        private readonly List<AddressBookEntry> _entries = new List<AddressBookEntry>();
 
         public AddressBookService()
         {
@@ -25,7 +25,10 @@ namespace aa_interview.Services
         public AddressBookEntry AddEntry(AddressBookEntry entry)
         {
             entry.Id = 1;
-            _entries.Add(entry);
+            if (entry != null)
+            {
+                _entries.Add(entry);
+            }
             return entry;
         }
 

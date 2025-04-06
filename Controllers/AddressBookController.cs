@@ -23,7 +23,7 @@ public class AddressBookController(AddressBookService addressBookService) : Cont
     [HttpPost]
     public ActionResult<AddressBookEntry> CreateEntry(AddressBookEntry entry)
     {
-        var createdEntry = addressBookService.CreateEntry(entry);
+        var createdEntry = addressBookService.AddEntry(entry);
         return CreatedAtAction(nameof(GetEntry), new { id = createdEntry.Id }, createdEntry);
     }
 
