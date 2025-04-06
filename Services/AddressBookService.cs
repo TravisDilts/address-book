@@ -51,6 +51,8 @@ namespace aa_interview.Services
             if (entry != null)
             {
                 _entries.Remove(entry);
+            } else {
+                return 0;
             }
             return 1;
         }

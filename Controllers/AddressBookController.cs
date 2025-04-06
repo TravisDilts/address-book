@@ -51,4 +51,21 @@ public class AddressBookController(AddressBookService addressBookService) : Cont
         return NoContent();
     }
 
+    [HttpDelete("{id}")]
+    public ActionResult DeleteEntry(int id)
+    {
+        if (!id.HasValue)
+        {
+            return BadRequest();
+        }
+
+        var deleted = addressBookService.DeleteEntry(id);
+        if (deleted != 1)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
 }
