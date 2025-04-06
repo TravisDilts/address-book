@@ -9,6 +9,13 @@ using aa_interview.Models;
 public class AddressBookController(AddressBookService addressBookService) : ControllerBase
 {
   
+    [HttpGet()]
+    public ActionResult<List<AddressBookEntry>> GetAllEntries()
+    {
+        var entries = addressBookService.GetAllEntries();
+        return Ok(entries);
+    }
+
     [HttpGet("{id}")]
     public ActionResult<AddressBookEntry> GetEntry(int id)
     {
