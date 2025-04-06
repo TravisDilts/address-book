@@ -17,6 +17,14 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseRouting();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}"
+        );
+});
 
 //Test populate the address book with some entries
 var addressBookService = app.Services.GetService<AddressBookService>();
