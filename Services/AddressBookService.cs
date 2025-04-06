@@ -6,6 +6,7 @@ namespace aa_interview.Services
     public class AddressBookService
     {
         private readonly List<AddressBookEntry> _entries = new List<AddressBookEntry>();
+        private int lastId = 0; // Start at 0, but increment as we add (quick solution)
 
         public AddressBookService()
         {
@@ -24,10 +25,11 @@ namespace aa_interview.Services
 
         public AddressBookEntry AddEntry(AddressBookEntry entry)
         {
-            entry.Id = 1;
+            entry.Id = lastId;
             if (entry != null)
             {
                 _entries.Add(entry);
+                lastId += 1;
             }
             return entry;
         }
