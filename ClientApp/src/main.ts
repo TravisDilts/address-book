@@ -1,7 +1,12 @@
-import { enableProdMode } from '@angular/core';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppModule } from './app/app.module';
+
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { provideRouter } from '@angular/router';
+import { AppComponent } from './app/app.component';
 
 
 export function getBaseUrl() {
@@ -16,5 +21,11 @@ const providers = [
 //   enableProdMode();
 // }
 
-platformBrowserDynamic(providers).bootstrapModule(AppModule)
+bootstrapApplication(AppComponent, {
+    providers: [
+        importProvidersFrom(BrowserModule, FormsModule),
+        provideHttpClient(withInterceptorsFromDi()),
+        provideRouter([])
+    ]
+})
   .catch(err => console.log(err));

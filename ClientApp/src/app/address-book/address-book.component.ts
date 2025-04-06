@@ -1,12 +1,14 @@
 import { AddressBookService } from './../services/address-book.service';
 import { Component, OnInit } from '@angular/core';
 import { AddressBookEntry } from '../models/address-book-entry.model';
+import { NgIf, NgFor } from '@angular/common';
+import { AddressEditComponent } from '../address-edit/address-edit.component';
 
 @Component({
     selector: 'app-address-book',
     templateUrl: './address-book.component.html',
     styleUrls: ['./address-book.component.css'],
-    standalone: false
+    imports: [NgIf, AddressEditComponent, NgFor]
 })
 export class AddressBookComponent implements OnInit {
   entries: AddressBookEntry[] = [];
